@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 	    if user.password == password
 	      user
 	    else
-	      nil
+				nil
 	    end
 	  end
 end

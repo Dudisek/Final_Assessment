@@ -8,13 +8,17 @@ class BookmarksController < ApplicationController
   end
 
   def create
-  	@bookmark = current_user.bookmarks.new(url: params[:bookmark])
+  	@bookmark = current_user.bookmarks.new(url: params[:bookmark][:url])
   	@bookmark.save
-  	redirect_to bookmarks_path
+  	redirect_to bookmark_path(@bookmark)
   end
 
   def show
-    @bookmark = Bookmark.find(:id)
+    if current_user.present?
+      @bookmark = Bookmark.find(params[:id])
+    else
+      redirect_to new_session_path
+    end
   end
 
 end
