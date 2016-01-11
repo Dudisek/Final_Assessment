@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	validates :password, presence: true
 
 	  def self.authenticate(email, password)
-	    user = find_by_email(email)
+	    user = find_by(email: email)
 	    if user.password == password
 	      user
 	    else
