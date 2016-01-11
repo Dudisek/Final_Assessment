@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
 
 	  def self.authenticate(email, password)
 	    user = find_by(email: email)
-	    byebug
 	    if user.password == password
 	      user
 	    else

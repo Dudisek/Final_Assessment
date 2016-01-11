@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if @current_user.present?%>
-Welcome, <%=@user.email%>
+<% if current_user.present?%>
+Welcome, <%=current_user.email%>
 <%end%>
 	<%= link_to "Sign up", new_user_path %>
 

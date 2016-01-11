@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		byebug
 	  user = User.authenticate(params[:session][:email], params[:session][:password])
 	  if user
 	    session[:user_id] = user.id
