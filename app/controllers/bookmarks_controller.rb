@@ -5,10 +5,6 @@ class BookmarksController < ApplicationController
   def index
     if current_user.present?
     	@bookmarks = current_user.bookmarks
-      # @bookmarks = current_user.bookmarks
-      # @bookmarks = current_user
-      # @bookmark = @bookmarks
-      # @bookmarks = Bookmark.all
     else
       redirect_to new_session_path
     end
