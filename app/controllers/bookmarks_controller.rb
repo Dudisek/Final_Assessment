@@ -1,6 +1,10 @@
 class BookmarksController < ApplicationController
+  include BookmarksHelper
+
+  
   def index
-  	@bookmark = Bookmark.all
+  	@bookmark = Bookmark
+    @bookmarks = Bookmark
   end
 
   def new
