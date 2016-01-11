@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_parmas)
 		  if @user.save
-		    redirect_to root_url, :notice => "Signed up!"
+		    redirect_to bookmarks_path, :notice => "Signed up!"
 		  else
 		    render "new"
 		  end
