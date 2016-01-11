@@ -1,10 +1,14 @@
 class BookmarksController < ApplicationController
   include BookmarksHelper
 
-  
+
   def index
-  	@bookmark = Bookmark
-    @bookmarks = Bookmark
+    if current_user.present?
+    	@bookmark = Bookmark
+      @bookmarks = Bookmark
+    else
+      redirect_to new_session_path
+    end
   end
 
   def new
@@ -12,9 +16,9 @@ class BookmarksController < ApplicationController
   end
 
   def create
-  	@bookmark = current_user.bookmarks.new(url: params[:bookmark][:url])
-  	@bookmark.save
-  	redirect_to bookmark_path(@bookmark)
+    @user = User.find(current_user.id)
+  	@bookmark = Bookmark.create(url: params[:bookmark][:url], user_id: @user.id)
+  	redirect_to bookmarks_path
   end
 
   def show
