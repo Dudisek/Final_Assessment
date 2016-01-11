@@ -7,7 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if @current_user.present?%>
+Welcome, <%=@user.email%>
+<%end%>
+	<%= link_to "Sign up", new_user_path %>
+
+<%= form_for :session, url: sessions_path do |f| %>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+ 
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_area :password %>
+  </p>
+
+  <p>
+    <%= f.submit "Sign in" %>
+  </p>
+<% end %>
   <%= yield %>
 
 </body>
 </html>
+
+

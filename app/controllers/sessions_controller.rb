@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
 
 	def new
+
 	end
 
 	def create
-	  user = User.authenticate(params[:email], params[:password])
+		byebug
+	  user = User.authenticate(params[:session][:email], params[:session][:password])
 	  if user
 	    session[:user_id] = user.id
 	    redirect_to bookmarks_path, :notice => "Logged in!"
@@ -12,5 +14,4 @@ class SessionsController < ApplicationController
 	    render "new"
 	  end
 	end
-
 end
