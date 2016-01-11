@@ -1,3 +1,9 @@
+<% if current_user.present? %>
+	<% if @bookmarks.present? %>
+		<%= @bookmarks.last.url%>
+	<%end%>
+<%end%>
 <h1>Bookmarks#index</h1>
 <p>Find me in app/views/bookmarks/index.html.erb</p>
 <%= link_to "Add bookmark", new_bookmark_path %>
+
